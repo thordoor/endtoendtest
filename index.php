@@ -1,1 +1,4 @@
-<?php phpinfo(); ?>
+<?php
+class PhonePlan
+{
+}
