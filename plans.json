@@ -1,0 +1,11 @@
+[
+    {"company":"Telmore", "plan":"Home", "data":"20", "hours":"20", "price":"129"},
+    {"company":"Telmore", "plan":"Play", "data":"30", "hours":"15", "price":"129"},
+    {"company":"Oister", "plan":"P1", "data":"1", "hours":"2", "price":"59"},
+    {"company":"Oister", "plan":"P2", "data":"5", "hours":"5", "price":"79"},
+    {"company":"Oister", "plan":"P3", "data":"15", "hours":"15", "price":"99"},
+    {"company":"Oister", "plan":"P4", "data":"40", "hours":"inf", "price":"129"},
+    {"company":"Callme", "plan":"P1", "data":"25", "hours":"15", "price":"119"},
+    {"company":"Callme", "plan":"P2", "data":"30", "hours":"20", "price":"149"},
+    {"company":"Callme", "plan":"P3", "data":"40", "hours":"inf", "price":"199"}
+]
