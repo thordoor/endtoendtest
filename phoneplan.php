@@ -27,9 +27,10 @@ class PhonePlan
                 $data = $plan["data"];
                 $price = $plan["price"];
                 array_push($correctPlan, $company, $planName, $hours, $data, $price);
+                return $correctPlan;
             }
             else{
-                $this->getClosest($h, $d);
+                $correctPlan = $this->getClosest($h, $d);
             }
         }
         return $correctPlan;
@@ -38,9 +39,40 @@ class PhonePlan
 
     public function getClosest($h, $d)
     {
-            
+        $planArr = $this->getJson();
+        $closestHours = null;
+        $closestData = null;
+        foreach ($planArr as $plan) {
+            if($closestHours === null || abs($h - $closestHours) > abs($plan['hours'] - $h)){
+                $closestHours = $plan['hours'];
+            }
+            if($closestData === null || abs($d - $closestData) > abs($plan['data'] - $d)){
+                $closestData = $plan['data'];
+            }
+        }
+        print_r($plan['data']);
+        
+        foreach ($planArr as $plan) {
+            if($plan['hours'] == $closestHours && $plan['data'] == $closestData){
+                //print_r($plan['data']);
+                $company = $plan['company'];
+                $planName = $plan['plan'];
+                $hours = $plan['hours'];
+                $data = $plan['data'];
+                $price = $plan['price'];        
+            }
+            else if($plan['hours'] == $closestHours){
+                $company = $plan['company'];
+                $planName = $plan['plan'];
+                $hours = $closestHours;
+                $data = $plan['data'];
+                $price = $plan['price'];
+            }
+        }
+        if($h > 50){
+            $closestHours = 'inf';
+        }
+        return [$company, $planName, $closestHours, $closestData, $price];
         //find closest plan.
     }
-
-    //print_r($json[0]);
 }

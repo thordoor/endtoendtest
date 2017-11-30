@@ -18,10 +18,20 @@ class TestClass extends TestCase
     
         public function testFindPLan()
         {
-            $result = $this->phoneplan->findPLan(20, 20);
+            $result = $this->phoneplan->findPLan('inf', 20);
             $this->assertInternalType('array', $result);
-            $this->assertEquals(5, count($result));
+            $this->assertEquals(45, count($result));
             $this->assertEquals('Telmore', $result[0]);
             $this->assertEquals('Home', $result[1]);
+            $this->assertEquals('inf', $result[2]);
+            $this->assertEquals(20, $result[3]);
+            $this->assertEquals(129, $result[4]);
+            
+        }
+
+        public function testGetClosest()
+        {
+            $result = $this->phoneplan->getClosest(2, 30);
+            $this->assertEquals([15, 30], $result);
         }
 }
