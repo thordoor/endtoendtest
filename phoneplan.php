@@ -32,7 +32,6 @@ class PhonePlan
         return $correctPlan;
     }
 
-
     public function getClosestData($h, $d, $plans)
     {
         $closestData = NULL;
