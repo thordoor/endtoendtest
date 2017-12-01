@@ -1,9 +1,16 @@
 <?php
-require('phoneplan.php');
-$phonePlan = new PhonePlan();
-$hours = $_POST['hours'];
-$data = $_POST['data'];
-$plan = $phonePlan->findPlan($hours, $data);
-print_r('You should pick the company: ' . $plan[0] . '. Their plan: ' . $plan[1] . ' offers ' . $plan[2] . ' Hours talk and ' . $plan[3] . 'GB data. It costs: ' . $plan[4] . ',-');
+include_once 'phoneplan.php';
+function findPhonePlan($h, $d){
+    $phonePlan = new PhonePlan();
+    $plan = $phonePlan->findPlan($h, $d);
+    return $plan;
+}
+if(isset($_POST['submit'])){
+    $hours = $_POST['hours'];
+    $data = $_POST['data'];
+    $plan = findPhonePlan($hours, $data);
+    print_r('You should pick the company: ' . $plan['company'] . '. Their plan: ' . $plan['plan'] . ' offers ' . $plan['hours'] . ' Hours talk and ' . $plan['data'] . 'GB data. It costs: ' . $plan['price'] . ',-');
+    
+}
 
 ?>
